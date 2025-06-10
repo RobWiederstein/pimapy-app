@@ -38,9 +38,6 @@
     <label>Diabetes Pedigree (0.078 to 2.42):
       <input type="number" name="dbts_pdgr" step="any" min="0.078" max="2.42" required>
     </label>
-    <label>Flag Imp (0 or 1):
-      <input type="number" name="flag_imp" min="0" max="1" required>
-    </label>
     <label>Age (21 to 81 years):
       <input type="number" name="age" step="1" min="21" max="81" required>
     </label>
@@ -54,6 +51,9 @@
       e.preventDefault();
       const data = Object.fromEntries(new FormData(e.target).entries());
       for (let key in data) data[key] = Number(data[key]);
+
+      // Manually add flag_imp since the input is removed
+      data.flag_imp = 0;
 
       document.getElementById('result').textContent = 'Predicting...';
 
